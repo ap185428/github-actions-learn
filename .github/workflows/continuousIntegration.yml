@@ -17,8 +17,10 @@ on:
 jobs:
   build:    ## build is one of the many jobs
 
-    runs-on: ubuntu-latest
-
+    runs-on: ${{matrix.os}}
+    strategy: 
+      matrix: 
+        os: [ubuntu-latest, windows-latest, macOS-latest]
     steps:
     - uses: actions/checkout@v2         ## Part where reusable code is kept. Go to github.com/actions to see the code
     - name: Set up JDK 1.8
